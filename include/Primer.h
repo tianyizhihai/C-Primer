@@ -2,6 +2,8 @@
 #include <string>
 #include <vector>
 #include <sstream>
+#include <list>
+#include <array>
 using namespace std;
 
 
