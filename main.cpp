@@ -1,6 +1,7 @@
-#include <iostream>
-using namespace std;
-int main(){
-    cout<<"Hello world"<<endl;
+#include "Primer.h"
+
+int main()
+{
+
     return 0;
 }
