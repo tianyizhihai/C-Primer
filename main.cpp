@@ -193,9 +193,57 @@ int main()
     // s.assign(cp,7); // s == "Stately"
     // s.insert(s.size(),cp+7); // s = "Stately, plump Buck"
     // 也可以插入string
-    string s = "some string",s2 = "some other string";
-    s.insert(0,s2); //在s中位置0之前插入s2的拷贝
-    s.insert(0,s2,0,s2.size()); //在s[0]之前插入s2中s2[0]开始的s2.sze()个字符
+    // string s = "some string",s2 = "some other string";
+    // s.insert(0,s2); //在s中位置0之前插入s2的拷贝
+    // s.insert(0,s2,0,s2.size()); //在s[0]之前插入s2中s2[0]开始的s2.sze()个字符
+    //append和replace函数
+    //append操作实在string进行插入操作的一种简写形式
+    // string s("C++ Pirmer"),s2 = s;
+    // s.insert(s.size()," 4th Ed.");//C++ Pirmer 4th Ed.
+    // s2.append(" 4th Ed.");//C++ Pirmer 4th Ed.
+    //replace操作是erase和insert的一种简写形式
+    // s.erase(11,3);// s = "C++ Primer  4th"
+    // s.insert(s.size(),"5th");//C++ Pirmer 5th Ed.
+    // s2.replace(11,3,"5th");//C++ Pirmer 5th Ed.
+    // s2.replace(11,3,"lijiaming");//也可以长度无需相等
+    //string搜索操作
+    // string s("Hello World"),s2("World");
+    // find()函数返回首次找到s2中与s中某一段相等的子串的起始位置
+    // int pos = s.find(s2); // pos == 6
+    // rfind()函数返回最后一次找到s2中与s中某一段相等的子串的起始位置
+    //int pos = s.rfind(s2); //pos == 6
+    // find_first_of()函数返回首次找到s2中与s中某一字符相等的位置
+    // int pos = s.find_first_of("lo"); // pos == 2
+    // find_last_of()函数返回最后一次找到s2中与s中某一字符相等的位置
+    // int pos = s.find_last_of("lo"); // pos == 9
+    // find_first_not_of()函数返回首次找到s2中不与s中某一字符相等的位置
+    // int pos = s.find_first_not_of("lo"); // pos == 0
+    // find_first_not_of()函数返回首次找到s2中不与s中某一字符相等的位置
+    // int pos = s.find_last_not_of("lo"); // pos == 10
+    // string numbers("0123456789"),name("r2d2");
+    // string::size_type pos = 0;
+    // while((pos =name.find_first_of(numbers,pos)) != string::npos)
+    // {
+    //     cout<<"found number at index "<<pos<<" element is"<< name[pos]<<endl;
+    //     pos++;
+    // }
+    //s.compare()的几种参数形式
+    // int result = s.compare(s2); // result == 0
+    // result = s.compare(s2.c_str()); // result == 0
+    // result = s.compare(0,s.size(),s2,0,s2.size()); // result == 0
+    // result = s.compare(0,s.size(),s2,0,s2.size()-1); // result < 0
+    // result = s.compare(0,s.size(),s2,s2.size()-1,1); // result > 0
+    // string转换成C风格字符数组
+    // const char *cp = s.c_str();
+    // const char *cp = &s[0];
+    // C风格字符数组转string
+    // string s2(cp);
+    // string s2(cp,n);
+    // string s2(cp,n,m
+    //string转换其他类型
+    //栈和队列
 #pragma endregion
+
+
     return 0;
 }

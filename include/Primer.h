@@ -7,7 +7,6 @@
 #include <deque>
 #include <forward_list>
 using namespace std;
-
 class Sales_data
 {
 public:
