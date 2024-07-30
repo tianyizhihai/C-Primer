@@ -188,7 +188,7 @@ int main()
     // string s;
     // s.insert(s.size(),5,'!');//在s末尾插入5个感叹号
     // s.erase(s.size()-5,5);//在s删除最后5个字符
-    // //还提供了接收C风格字符数组的insert和assign版本
+    // 还提供了接收C风格字符数组的insert和assign版本
     // const char *cp = "Stately, plump Buck";
     // s.assign(cp,7); // s == "Stately"
     // s.insert(s.size(),cp+7); // s = "Stately, plump Buck"
