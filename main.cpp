@@ -122,7 +122,7 @@ int main()
     //         ++it;
     // }
     // it1 = list1.erase(it1,it2);//调用后，it1 == it2;
-    //特殊的forward_list操作
+    // 特殊的forward_list操作
     // forward_list<int> flist1;
     // flist1.before_begin();
     // flist1.cbefore_begin();
@@ -131,7 +131,7 @@ int main()
     // flist1.insert_after(p,b,e);//b,e为两个迭代器
     // flist1.emplace_after();
     // flist1.erase_after(); //返回一个被删元素之后元素的迭代器
-    //eg:
+    // eg:
     // forward_list<int> flist1 = {0,1,2,3,4,5,7,8,9};
     // auto prev = flist1.before_begin();
     // auto curr = flist1.begin();
@@ -145,12 +145,12 @@ int main()
     //         ++curr;
     //     }
     // }
-    //顺序容器大小操作
-    //resize()不适用于array
+    // 顺序容器大小操作
+    // resize()不适用于array
     // vector<int> v1;
     // v1.resize(n); //调整为n个元素，多余会被删除，若必须添加新元素，对新元素进行值初始化 int值初始化为0
     // v1.resize(n,1);  //调整为n个元素，多余会被删除，若必须添加新元素，所有新元素为1
-    //不要缓存end()迭代器,缓存end()迭代器会导致end()不会重新计算
+    // 不要缓存end()迭代器,缓存end()迭代器会导致end()不会重新计算
     // vector<int> v1;
     // auto begin = v1.begin(),end = v1.end();
     // while(begin!=end)
@@ -159,10 +159,10 @@ int main()
     //     begin = v1.insert(begin,42);
     //     ++begin;
     // } //扩容的时候，可能会在其他位置开辟空间而不是尾后,删除的时候，尾后仍然不变会导致越界
-    //vector是如何增长的
-    //shrink_to_fit 只适用于vector、string和deque
-    //capacity和reserve只适用于vector和string
-    //vector<int> v1;
+    // vector是如何增长的
+    // shrink_to_fit 只适用于vector、string和deque
+    // capacity和reserve只适用于vector和string
+    // vector<int> v1;
     // v1.shrink_to_fit(); //将capacity减少为与size相同大小
     // v1.capacity(); // 不重新分配内存空间的话，v1可以保存多少元素
     // v1.reserve(); // 分配至少能容纳n个元素的内存空间
@@ -177,14 +177,14 @@ int main()
     // string s6(s1,6); //从s1[6]开始，直到s1末尾; s6 == "World!!!"
     // string s7(s1,6,20);//正确，只拷贝到s1末尾；s7 == "World!!!"
     // string s8(s1,16);//抛出out_of_range异常
-    //string s;
-    //s.substr(pos,n);//返回一个string,包含s中从pos开始的n个字符的拷贝.pos的默认值为0.n的默认值为s.size()-pos,级拷贝从pos开始的所有字符
+    // string s;
+    // s.substr(pos,n);//返回一个string,包含s中从pos开始的n个字符的拷贝.pos的默认值为0.n的默认值为s.size()-pos,级拷贝从pos开始的所有字符
     // string s("hello world");
     // string s2 = s.substr(0,5);//s2 == "hello"
     // string s3 = s.substr(6);//s3 == "world"
     // string s4 = s.substr(6,11);//s4 == "world"
     // string s5 = s.substr(12);//错误，越界
-    //除了接收迭代器的insert和erase版本外,string还提供了接收下标的版本
+    // 除了接收迭代器的insert和erase版本外,string还提供了接收下标的版本
     // string s;
     // s.insert(s.size(),5,'!');//在s末尾插入5个感叹号
     // s.erase(s.size()-5,5);//在s删除最后5个字符
@@ -196,22 +196,22 @@ int main()
     // string s = "some string",s2 = "some other string";
     // s.insert(0,s2); //在s中位置0之前插入s2的拷贝
     // s.insert(0,s2,0,s2.size()); //在s[0]之前插入s2中s2[0]开始的s2.sze()个字符
-    //append和replace函数
-    //append操作实在string进行插入操作的一种简写形式
+    // append和replace函数
+    // append操作实在string进行插入操作的一种简写形式
     // string s("C++ Pirmer"),s2 = s;
     // s.insert(s.size()," 4th Ed.");//C++ Pirmer 4th Ed.
     // s2.append(" 4th Ed.");//C++ Pirmer 4th Ed.
-    //replace操作是erase和insert的一种简写形式
+    // replace操作是erase和insert的一种简写形式
     // s.erase(11,3);// s = "C++ Primer  4th"
     // s.insert(s.size(),"5th");//C++ Pirmer 5th Ed.
     // s2.replace(11,3,"5th");//C++ Pirmer 5th Ed.
     // s2.replace(11,3,"lijiaming");//也可以长度无需相等
-    //string搜索操作
+    // string搜索操作
     // string s("Hello World"),s2("World");
     // find()函数返回首次找到s2中与s中某一段相等的子串的起始位置
     // int pos = s.find(s2); // pos == 6
     // rfind()函数返回最后一次找到s2中与s中某一段相等的子串的起始位置
-    //int pos = s.rfind(s2); //pos == 6
+    // int pos = s.rfind(s2); //pos == 6
     // find_first_of()函数返回首次找到s2中与s中某一字符相等的位置
     // int pos = s.find_first_of("lo"); // pos == 2
     // find_last_of()函数返回最后一次找到s2中与s中某一字符相等的位置
@@ -227,7 +227,7 @@ int main()
     //     cout<<"found number at index "<<pos<<" element is"<< name[pos]<<endl;
     //     pos++;
     // }
-    //s.compare()的几种参数形式
+    // s.compare()的几种参数形式
     // int result = s.compare(s2); // result == 0
     // result = s.compare(s2.c_str()); // result == 0
     // result = s.compare(0,s.size(),s2,0,s2.size()); // result == 0
@@ -239,11 +239,54 @@ int main()
     // C风格字符数组转string
     // string s2(cp);
     // string s2(cp,n);
-    // string s2(cp,n,m
-    //string转换其他类型
-    //栈和队列
+    // string s2(cp,n,m);
+    // string转换其他类型
+    // 栈和队列
+
 #pragma endregion
-
-
+#pragma regopm 泛型算法概述
+    // // 求和
+    // vector<int> vec;
+    // // int sum = accumulate(vec.cbegin(),vec.cend(),0);//第三个参数决定返回值类型
+    // // vector<string> v = {"123","456"};
+    // // string sum = accumulate(v.cbegin(),v.cend(),string(""));//正确
+    // //     sum = accumulate(v.cbegin(),v.cend(),"");//错误，const char* 没有定义+运算符
+    // // 比较
+    // vector<string> roster1 = {"123", "345"};
+    // list<const char *> roster2 = {"123", "345"};
+    // // vector<string> roster2 = {"123","345"};
+    // // 第三个参数表示第二个序列的首元素
+    // // roster2中的元素树木应该至少和roster1一样多，否则返回false
+    // cout << equal(roster1.cbegin(), roster1.cend(), roster2.cbegin()) << endl;
+    // // 上面的roster1可以是vector<string>
+    // // 而roster2是list<const char*> 只要能够访问，能够比较即可
+    // // 写容器元素的算法
+    // fill(vec.begin(), vec.end(), 0);                     // 将每个元素重置为0
+    // fill(vec.begin(), vec.begin() + vec.size() / 2, 10); // 将容器的一个子序列设置为10
+    // fill_n(vec.begin(), vec.size(), 0);                  // 将每个元素重置为0
+    // // fill_n(dest,n,val);//dest指向一个元素,而从dest开始至少需要包含n个元素
+    // fill_n(vec.begin(), 10, 0); // 灾难：不可越界
+    // // 插入迭代器
+    // auto it = back_inserter(vec);
+    // *it = 42; // 假设vec为空,现在vec有一个值为42的元素
+    // vector<int> vec2;
+    // fill_n(back_inserter(vec2), 10, 0); // 添加10哥元素到vec
+    // // 每次赋值都会在迭代器上调用push_back
+    // // 拷贝算法
+    // int a1[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+    // int a2[sizeof(a1) / sizeof(*a1)]; // a1与a2大小一样
+    // // ret指向拷贝到a2的尾后位置
+    // auto ret = copy(begin(a1), end(a1), a2); // 把a1的内容拷贝给a2
+    // // 将所有值为0的元素改为42
+    // list<int> ilist;
+    // replace(ilist.begin(), ilist.end(), 0, 42);
+    // // 使用back_insterter按需要增长目标序列
+    // replace_copy(ilist.cbegin(), ilist.cend(), back_inserter(vec), 0, 42);
+    // 上面的语句调用后,list并未改变,vec包含list的一份拷贝
+    // 不过原来在list中值为0的元素在vec中都变成了42
+    vector<string> words = {"the","quick","red","fox","jumps","over","the","slow","red","turtle"};
+    elimDups(words);
+    cout<<"size"<<words.size()<<endl;
+#pragma endregion
     return 0;
 }

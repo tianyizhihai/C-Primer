@@ -6,7 +6,10 @@
 #include <array>
 #include <deque>
 #include <forward_list>
+#include <numeric>
+#include <algorithm>
 using namespace std;
+
 class Sales_data
 {
 public:
@@ -34,6 +37,7 @@ void LJM_StringStream();
 #pragma endregion
 
 #pragma region 顺序容器
+
 class noDefualt
 {
 private:
@@ -49,4 +53,18 @@ public:
         str = str_;
     }
 };
+#pragma endregion
+
+#pragma region 泛型算法概述
+//消除重复单词
+void elimDups(vector<string>& words)
+{
+    //按字典顺序排序words，以便查找重复单词
+    sort(words.begin(),words.end());
+    //unique消除相邻的重复项
+    //排列在范围的前部,返回指向不重复区域之后一个位置的迭代器
+    auto end_unique = unique(words.begin(),words.end());
+    words.erase(end_unique,words.end());
+}
+
 #pragma endregion
