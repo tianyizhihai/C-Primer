@@ -54,8 +54,16 @@ public:
     }
 };
 #pragma endregion
-//消除重复单词
-#pragma region 泛型算法概述
-void elimDups(vector<string>& words);
 
+#pragma region 泛型算法概述
+//消除重复单词
+void elimDups(vector<string>& words);
+/// @brief 比较函数，用来按长度排序单词
+/// @param s1 
+/// @param s2 
+/// @return 
+bool isShorter(const string& s1, const string& s2);
+void ToString(const vector<string>& words);
+
+void biggies(vector<string>& words, vector<string>::size_type sz);
 #pragma endregion

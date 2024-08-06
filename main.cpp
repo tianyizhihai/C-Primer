@@ -3,7 +3,7 @@
 int main()
 {
 
-#pragma region 顺序容器
+#pragma region 
     // 若类有默认构造函数，可以直接vector创建，若没有则需要元素初始化器
     // vector<Defualt> v1(10); 正确：有默认构造函数
     // vector<noDefualt> v1(10,init); 正确：提供元素初始化器
@@ -285,8 +285,34 @@ int main()
     // 上面的语句调用后,list并未改变,vec包含list的一份拷贝
     // 不过原来在list中值为0的元素在vec中都变成了42
     vector<string> words = {"the","quick","red","fox","jumps","over","the","slow","red","turtle"};
-    elimDups(words);
-    cout<<"size"<<words.size()<<endl;
+    // elimDups(words);
+    // sort(words.begin(), words.end(),isShorter);
+    // elimDups(words);
+    // stable_sort(words.begin(), words.end(), isShorter);
+    // ToString(words);
+    // lambda表达式
+    // auto check_size = [](const string &s) { return s.size() >= 5; };
+    // auto wc = count_if(words.begin(), words.end(), check_size);
+    // 正则表达式
+    // regex r("[a-zA-Z]+");
+    // sregex_iterator it(words.begin(), words.end(), r), end;
+    // for(; it!= end; ++it)
+    // {
+    //     cout << "Match: " << it->str() << endl;
+    // }
+    // 正则表达式和lambda
+    // sregex_token_iterator it(words.begin(), words.end(), r, -1), end;
+    // for(; it!= end; ++it)
+    // {
+    //     cout << "Match: " << it->str() << endl;
+    // }
+    // 正则表达式和函数
+    // auto is_shorter = [](
+    // lambda表达式
+    auto f =[]{return 42;};
+    // cout<<f()<<endl;
+    biggies(words,4);
+
 #pragma endregion
     return 0;
 }
