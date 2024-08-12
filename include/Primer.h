@@ -2,14 +2,17 @@
 #include <string>
 #include <vector>
 #include <sstream>
+#include <fstream>
+#include <iterator>
 #include <list>
 #include <array>
 #include <deque>
 #include <forward_list>
 #include <numeric>
 #include <algorithm>
+#include <functional>
 using namespace std;
-
+using namespace std::placeholders;
 class Sales_data
 {
 public:
@@ -65,5 +68,16 @@ void elimDups(vector<string>& words);
 bool isShorter(const string& s1, const string& s2);
 void ToString(const vector<string>& words);
 
-void biggies(vector<string>& words, vector<string>::size_type sz);
+void biggies1(vector<string>& words, vector<string>::size_type sz);
+
+void biggies2(vector<string>& words, vector<string>::size_type sz,ostream &os=cout,char c =' ');
+
+//值捕获
+void func1();
+//引用捕获
+void func2();
+void func3();
+void func4();
+
+bool check_size(const string& s1, string::size_type sz);
 #pragma endregion

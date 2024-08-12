@@ -54,7 +54,7 @@ void ToString(const vector<string> &words)
         cout << word << " ";
     }
 }
-void biggies(vector<string> &words, vector<string>::size_type sz)
+void biggies1(vector<string> &words, vector<string>::size_type sz)
 {
     elimDups(words);
     // stable_sort(words.begin(), words.end(), isShorter);
@@ -63,9 +63,62 @@ void biggies(vector<string> &words, vector<string>::size_type sz)
     auto wc = find_if(words.begin(), words.end(), [sz](const string &a)
                       { return a.size() >= sz; });
     auto count = words.end() - wc;
-    cout<<"李佳明"<<sz<<"李佳明"<<count<<"李佳明"<<endl;
+    cout << "长度大于等于" << sz << "的元素有" << count << "个" << endl;
     for_each(wc, words.end(), [](const string &s)
              { cout << s << " "; });
     cout << endl;
+}
+void biggies2(vector<string> &words, vector<string>::size_type sz, ostream &os, char c)
+{
+    // 隐式在前，显式在后
+    // os隐式捕获，引用捕获；c显式捕获,值捕获方式
+    for_each(words.begin(), words.end(), [&, c](const string &s)
+             { os << s << c; });
+    // os显式捕获，引用捕获,c隐式捕获,值捕获
+    for_each(words.begin(), words.end(), [=, &os](const string &s)
+             { os << s << c; });
+}
+void func1()
+{
+    size_t v1 = 42;
+    auto f = [v1]()
+    { return v1; };
+    v1 = 0;
+    auto j = f();
+    cout << j << endl; // j=42
+}
+/// @brief 引用捕获
+void func2()
+{
+    // 当以引用方式捕获一个变量时，必须保证在lambda执行时变量是存在的
+    size_t v1 = 42;
+    auto f2 = [&v1]()
+    { return v1; };
+    v1 = 0;
+    auto j = f2();
+    cout << j << endl; // j=0
+}
+void func3()
+{
+    size_t v1 = 42;
+    auto f2 = [v1]() mutable //对于值拷贝的变量，如何需要修改,必须加上关键字mutable
+    { return ++v1; };
+    v1 = 0;
+    auto j = f2();
+    cout << j << endl; // j = 43
+}
+void func4()
+{
+    size_t v1 = 42;
+    auto f2 = [&v1]()
+    { return ++v1; };
+    v1 = 0;
+    auto j = f2();
+    cout << j << endl; // j = 1
+}
+
+bool check_size(const string& s,string::size_type sz)
+{
+    return s.size()>=sz;
 }
 #pragma endregion

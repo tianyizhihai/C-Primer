@@ -14,7 +14,16 @@
         "forward_list": "cpp",
         "list": "cpp",
         "initializer_list": "cpp",
-        "algorithm": "cpp"
+        "algorithm": "cpp",
+        "functional": "cpp"
+    },
+    "maptz.regionfolder": {
+    "[c]":{
+        "foldStart": "",
+        "foldStartRegex": "//.{0,}>>>",
+        "foldEnd": "",
+        "foldEndRegex": "/{5,}",
+        "disableFolding": false
     }
-
+}
 }

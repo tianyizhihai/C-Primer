@@ -3,7 +3,7 @@
 int main()
 {
 
-#pragma region 
+#pragma region 顺序容器
     // 若类有默认构造函数，可以直接vector创建，若没有则需要元素初始化器
     // vector<Defualt> v1(10); 正确：有默认构造函数
     // vector<noDefualt> v1(10,init); 正确：提供元素初始化器
@@ -244,7 +244,7 @@ int main()
     // 栈和队列
 
 #pragma endregion
-#pragma regopm 泛型算法概述
+#pragma region 泛型算法概述
     // // 求和
     // vector<int> vec;
     // // int sum = accumulate(vec.cbegin(),vec.cend(),0);//第三个参数决定返回值类型
@@ -284,12 +284,14 @@ int main()
     // replace_copy(ilist.cbegin(), ilist.cend(), back_inserter(vec), 0, 42);
     // 上面的语句调用后,list并未改变,vec包含list的一份拷贝
     // 不过原来在list中值为0的元素在vec中都变成了42
-    vector<string> words = {"the","quick","red","fox","jumps","over","the","slow","red","turtle"};
-    // elimDups(words);
-    // sort(words.begin(), words.end(),isShorter);
-    // elimDups(words);
-    // stable_sort(words.begin(), words.end(), isShorter);
-    // ToString(words);
+    vector<string> words = {"the", "quick", "red", "fox", "jumps", "over", "the", "slow", "red", "turtle"};
+// elimDups(words);
+// sort(words.begin(), words.end(),isShorter);
+// elimDups(words);
+// stable_sort(words.begin(), words.end(), isShorter);
+// ToString(words);
+#pragma endregion
+#pragma region lambda表达式
     // lambda表达式
     // auto check_size = [](const string &s) { return s.size() >= 5; };
     // auto wc = count_if(words.begin(), words.end(), check_size);
@@ -309,10 +311,67 @@ int main()
     // 正则表达式和函数
     // auto is_shorter = [](
     // lambda表达式
-    auto f =[]{return 42;};
+    // auto f = []
+    // { return 42; };
     // cout<<f()<<endl;
-    biggies(words,4);
+    // biggies(words, 4);
+    // lambda捕获和返回
+    // func1();
+    // func2();
+    // vector<int> vi = {1,-3,3,-4};
+    // transform(vi.begin(), vi.end(),vi.begin(),[](int i)->int{if(i<0)return -i;else return i;});
+    // for_each(vi.begin(), vi.end(), [](int i){cout<<i<<" ";});
+    // auto check6 = bind(check_size, _1, 6);
+    // string s = "hello";
+    // bool b1 = check6(s);
+    // cout << b1 << endl;
+    // auto wc = find_if(words.begin(), words.end(), bind(check_size, _1, 6));
+    // cout << *wc << endl;
+    // auto wc2 = find_if(words.begin(), words.end(), check6);
+    // cout << *wc2 << endl;
 
+    // g是一个有两个参数的可调用对象
+    // auto g = bind(f,a,b,_2,c,_1);
+    // g(X,Y)的调用会映射到：f(a,b,Y,c,X);
+    //  //按单词长度由短至长排序
+    //  sort(words.begin(), words.end(),isShorter);
+    //  //按单词长度由长至短排序
+    //  sort(words.begin(), words.end(),bind(isShorter,_2,_1));
+    // ref
+    //  it 是由inserter生成的迭代器
+    //  *it = val;//和下面代码一致
+    //  it =c.insert(iter,val);
+    //  ++it;
+    // back_inserter,创建一个使用push_back的迭代器
+    // front_inserter,创建一个使用push_front的迭代器
+    // inserter,创建一个使用insert的迭代器,插入指定迭代器之前的位置
+
+    // list<int> lst = {1, 2, 3, 4};
+    // auto it = lst.begin();
+    // cout<<*it<<endl;
+    // lst.push_front(0);
+    // cout<<*it<<endl;
+    // list<int> lst2, lst3;
+
+    // copy(lst.cbegin(), lst.cend(), front_inserter(lst2));         // 4,3,2,1
+    // for_each(lst2.begin(),lst2.end(),[](int s){cout<<s<<endl;});
+    // copy(lst.cbegin(), lst.cend(), inserter(lst3, lst3.begin())); // 1,2,3,4
+    // for_each(lst3.begin(),lst3.end(),[](int s){cout<<s<<endl;});
+    //iostream迭代器
+    vector<int> vec;
+    istream_iterator<int> int_iter(cin); //绑定流,从cin读取int
+    istream_iterator<int> int_eof; //默认初始化迭代器，尾后迭代器
+    // while(int_iter!=int_eof) 
+    // {
+    //     vec.push_back(*int_iter++);
+    // }
+    // //等同于
+    // vector<int> vec1(int_iter,int_eof);
+
+    // ifstream in("file.txt");
+    // istream_iterator<string> str_iter(in);//从"file.txt"中读取字符串
+
+    cout<<accumulate(int_iter,int_eof,0)<<endl;;
 #pragma endregion
     return 0;
 }
