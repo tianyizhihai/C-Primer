@@ -284,14 +284,12 @@ int main()
     // replace_copy(ilist.cbegin(), ilist.cend(), back_inserter(vec), 0, 42);
     // 上面的语句调用后,list并未改变,vec包含list的一份拷贝
     // 不过原来在list中值为0的元素在vec中都变成了42
-    vector<string> words = {"the", "quick", "red", "fox", "jumps", "over", "the", "slow", "red", "turtle"};
-// elimDups(words);
-// sort(words.begin(), words.end(),isShorter);
-// elimDups(words);
-// stable_sort(words.begin(), words.end(), isShorter);
-// ToString(words);
-#pragma endregion
-#pragma region lambda表达式
+    // vector<string> words = {"the", "quick", "red", "fox", "jumps", "over", "the", "slow", "red", "turtle"};
+    // elimDups(words);
+    // sort(words.begin(), words.end(),isShorter);
+    // elimDups(words);
+    // stable_sort(words.begin(), words.end(), isShorter);
+    // ToString(words);
     // lambda表达式
     // auto check_size = [](const string &s) { return s.size() >= 5; };
     // auto wc = count_if(words.begin(), words.end(), check_size);
@@ -358,7 +356,7 @@ int main()
     // copy(lst.cbegin(), lst.cend(), inserter(lst3, lst3.begin())); // 1,2,3,4
     // for_each(lst3.begin(),lst3.end(),[](int s){cout<<s<<endl;});
     // iostream迭代器
-    vector<int> vec = {1,2,3,4,5};
+    // vector<int> vec = {1, 2, 3, 4, 5};
     // istream_iterator<int> int_iter(cin); // 绑定流,从cin读取int
     // istream_iterator<int> int_eof;       // 默认初始化迭代器，尾后迭代器
     // while(int_iter!=int_eof)
@@ -385,7 +383,7 @@ int main()
 
     // copy(vec.begin(),vec.end(),out_iter);
     // cout<<endl;
-    //Sales_item类
+    // Sales_item类
     // istream_iterator<Sales_item> item_iter(cin),eof;
     // ostream_iterator<Sales_item> out_iter(cout,"\n");
     // Sales_item sum = *item_iter++;
@@ -394,7 +392,7 @@ int main()
     //     if(true)
     //     cout<<endl;
     // }
-    //反向迭代器
+    // 反向迭代器
     // for(auto r_iter = vec.crbegin();r_iter!=vec.crend();++r_iter)
     // {
     //     cout<<*r_iter<<endl;
@@ -402,16 +400,109 @@ int main()
     // sort(vec.begin(),vec.end());//升序
     // sort(vec.rbegin(),vec.rend());//降序
 
-    string line = "FIRST,MIDDLE,LAST";
-    auto comma = find(line.cbegin(),line.cend(),',');
-    cout<<string(line.cbegin(),comma)<<endl;
+    // string line = "FIRST,MIDDLE,LAST";
+    // auto comma = find(line.cbegin(), line.cend(), ',');
+    // cout << string(line.cbegin(), comma) << endl;
 
-    auto rcomma = find(line.crbegin(),line.crend(),',');
-    cout<<string(line.crbegin(),rcomma)<<endl;
+    // auto rcomma = find(line.crbegin(), line.crend(), ',');
+    // cout << string(line.crbegin(), rcomma) << endl;
 
-    cout<<string(rcomma.base(),line.cend())<<endl;
-    //泛型算法结构
-    //特定容器算法
+    // cout << string(rcomma.base(), line.cend()) << endl;
+    // 泛型算法结构
+    // 特定容器算法
+#pragma endregion
+#pragma region 使用关联容器
+
+    map<string, size_t> word_cout;
+    set<string> exclude = {"The", "But", "And", "Or", "An", "A",
+                           "the", "but", "and", "or", "an", "a"};
+    // string word;
+    // while(cin>>word)
+    //     if(exclude.find(word)==exclude.end())
+    //         ++word_cout[word];
+    // for(const auto& w:word_cout)
+    //     cout<<w.first<<" occurs "<< w.second << ((w.second>1)?" times":" time")<<endl;
+
+    // vector<int> ivec;
+
+    set<string>::key_type v1;   // v1是一个string
+    set<string>::value_type v2; // v2是一个string 两者相同
+
+    map<string, int>::value_type v3;  // v3是一个pare<const string,int>
+    map<string, int>::key_type v4;    // v4是一个string
+    map<string, int>::mapped_type v5; // v5是一个int
+
+    // *map_it 是指向pair<const string,size_t>对象的引用
+
+    // cout<<map_it->first<<endl;
+    // cout<<map_it->second<<endl;
+    // cout<<map_it->second<<endl;
+    // map_it->first = "new key";//错误：关键字是const的
+    // ++map_it->second;
+    set<int> iset = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+    // set<int>::iterator set_it = iset.begin();
+    // if(set_it!=iset.end())
+    // {
+    //     // *set_it =42;//错误，set中的关键字是const的
+    //     cout<<*set_it<<endl;
+    // }
+
+    // string word;
+    // while(cin>>word)
+    // {
+    //     auto ret = word_cout.insert({word,1});
+    //     if(!ret.second)
+    //         ++ret.first->second;
+
+    // }
+    // auto map_it = word_cout.begin();
+    // while(map_it!=word_cout.end())
+    // {
+    //     cout<<map_it->first<<"occurs"<<map_it->second<<"times"<<endl;
+    //     ++map_it;
+    // }
+    // //erase删除一个关键字，返回删除的元素数量
+    // if(word_cout.erase("word"))
+    //     cout<<"ok:"<<"word"<<" removed\n";
+    // else
+    //     cout<<"oops:"<<"word"<<" not found!\n";
+    // //插入一个关键字为Anna的元素,关联值进行值初始化；然后将1赋予它
+    // word_cout["Anna"] = 1; //下标运算符肯呢个插入一个新元素，我们只可以对非const的map使用下标操作，at也不能用于非const
+    // lower_bound和upper_bound不适用于无序容器
+    // lower_bound(k)返回一个迭代器,指向第一个关键字不小于k的元素
+    // upper_bound(k)返回一个迭代器,指向第一个关键字大于k的元素
+    // equal_range(k)返回一个迭代器pair，表示关键字等于k的元素的范围。若k不存在,pair的两个成员均等于c.end()
+
+    iset.find(1);   // 返回一个迭代器,指向key==1的元素
+    iset.find(11);  // 返回iset.end()
+    iset.count(1);  // 1
+    iset.count(11); // 0
+
+    // multimap<string,string> author{{"李佳明","一"},{"李佳明","二"},{"李佳明","三"},{"李佳明","四"}};
+    // size_t num = author.count("李佳明");
+    // auto author_it = author.find("李佳明");
+    // while(num)
+    // {
+    //     cout<<author_it->second<<endl;
+    //     author_it++;
+    //     num--;
+    // }
+    // for(auto beg = author.lower_bound("李佳明"),end = author.upper_bound("李佳明");beg!=end;beg++)
+    // {
+    //     cout<<beg->second<<endl;
+    // }
+    // for(auto pos = author.equal_range("李佳明");pos.first!=pos.second;pos.first++)
+    // {
+    //     cout<<pos.first->second<<endl;
+    // }
+    unordered_map<string,size_t>word_count;
+    string word;
+    while(cin>>word)
+        if(exclude.find(word)==exclude.end())
+            ++word_count[word];
+    for(const auto& w:word_count)
+        cout<<w.first<<" occurs "<< w.second << ((w.second>1)?" times":" time")<<endl;
+    //哈希，桶
 #pragma endregion
     return 0;
 }
