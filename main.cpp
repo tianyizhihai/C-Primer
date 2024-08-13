@@ -476,7 +476,7 @@ int main()
     iset.find(1);   // 返回一个迭代器,指向key==1的元素
     iset.find(11);  // 返回iset.end()
     iset.count(1);  // 1
-    iset.count(11); // 0
+    iset.count(11); //  0
 
     // multimap<string,string> author{{"李佳明","一"},{"李佳明","二"},{"李佳明","三"},{"李佳明","四"}};
     // size_t num = author.count("李佳明");
