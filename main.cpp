@@ -357,11 +357,11 @@ int main()
     // for_each(lst2.begin(),lst2.end(),[](int s){cout<<s<<endl;});
     // copy(lst.cbegin(), lst.cend(), inserter(lst3, lst3.begin())); // 1,2,3,4
     // for_each(lst3.begin(),lst3.end(),[](int s){cout<<s<<endl;});
-    //iostream迭代器
-    vector<int> vec;
-    istream_iterator<int> int_iter(cin); //绑定流,从cin读取int
-    istream_iterator<int> int_eof; //默认初始化迭代器，尾后迭代器
-    // while(int_iter!=int_eof) 
+    // iostream迭代器
+    vector<int> vec = {1,2,3,4,5};
+    // istream_iterator<int> int_iter(cin); // 绑定流,从cin读取int
+    // istream_iterator<int> int_eof;       // 默认初始化迭代器，尾后迭代器
+    // while(int_iter!=int_eof)
     // {
     //     vec.push_back(*int_iter++);
     // }
@@ -370,8 +370,48 @@ int main()
 
     // ifstream in("file.txt");
     // istream_iterator<string> str_iter(in);//从"file.txt"中读取字符串
+    // cout << accumulate(int_iter, int_eof, 0) << endl;
+    // ostream_iterator<int> out_iter(cout, " ");
 
-    cout<<accumulate(int_iter,int_eof,0)<<endl;;
+    // for (auto e : vec)
+    // {
+    //     *out_iter++ = e;
+    // }
+    // cout<<endl;
+
+    // for(auto e:vec)
+    //     out_iter = e;
+    // cout<<endl;
+
+    // copy(vec.begin(),vec.end(),out_iter);
+    // cout<<endl;
+    //Sales_item类
+    // istream_iterator<Sales_item> item_iter(cin),eof;
+    // ostream_iterator<Sales_item> out_iter(cout,"\n");
+    // Sales_item sum = *item_iter++;
+    // while(item_iter != eof)
+    // {
+    //     if(true)
+    //     cout<<endl;
+    // }
+    //反向迭代器
+    // for(auto r_iter = vec.crbegin();r_iter!=vec.crend();++r_iter)
+    // {
+    //     cout<<*r_iter<<endl;
+    // }
+    // sort(vec.begin(),vec.end());//升序
+    // sort(vec.rbegin(),vec.rend());//降序
+
+    string line = "FIRST,MIDDLE,LAST";
+    auto comma = find(line.cbegin(),line.cend(),',');
+    cout<<string(line.cbegin(),comma)<<endl;
+
+    auto rcomma = find(line.crbegin(),line.crend(),',');
+    cout<<string(line.crbegin(),rcomma)<<endl;
+
+    cout<<string(rcomma.base(),line.cend())<<endl;
+    //泛型算法结构
+    //特定容器算法
 #pragma endregion
     return 0;
 }

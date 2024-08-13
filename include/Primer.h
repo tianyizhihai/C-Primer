@@ -13,6 +13,10 @@
 #include <functional>
 using namespace std;
 using namespace std::placeholders;
+class Sales_item
+{
+    Sales_item(){};
+};
 class Sales_data
 {
 public:
