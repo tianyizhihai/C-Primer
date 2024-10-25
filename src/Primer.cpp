@@ -100,8 +100,9 @@ void func2()
 }
 void func3()
 {
+     // 对于值拷贝的变量，如何需要修改,必须加上关键字mutable
     size_t v1 = 42;
-    auto f2 = [v1]() mutable //对于值拷贝的变量，如何需要修改,必须加上关键字mutable
+    auto f2 = [v1]() mutable
     { return ++v1; };
     v1 = 0;
     auto j = f2();
@@ -117,8 +118,8 @@ void func4()
     cout << j << endl; // j = 1
 }
 
-bool check_size(const string& s,string::size_type sz)
+bool check_size(const string &s, string::size_type sz)
 {
-    return s.size()>=sz;
+    return s.size() >= sz;
 }
 #pragma endregion

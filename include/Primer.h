@@ -11,8 +11,14 @@
 #include <numeric>
 #include <algorithm>
 #include <functional>
+#include <map>
+#include <set>
 using namespace std;
 using namespace std::placeholders;
+class Sales_item
+{
+    Sales_item(){};
+};
 class Sales_data
 {
 public:
