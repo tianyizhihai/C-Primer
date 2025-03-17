@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.8.0)
 project(C-Primer)
-set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD 11)
 #设置输出exe路径
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_SOURCE_DIR}/bin)
 message(STATUS "source path: ${EXECUTABLE_OUTPUT_PATH}")

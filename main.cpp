@@ -1,5 +1,5 @@
 #include "Primer.h"
-
+using namespace std;
 int main()
 {
 
@@ -495,21 +495,116 @@ int main()
     // {
     //     cout<<pos.first->second<<endl;
     // }
-    unordered_map<string,size_t>word_count;
-    string word;
-    while(cin>>word)
-        if(exclude.find(word)==exclude.end())
-            ++word_count[word];
-    for(const auto& w:word_count)
-        cout<<w.first<<" occurs "<< w.second << ((w.second>1)?" times":" time")<<endl;
+    // unordered_map<string,size_t>word_count;
+    // string word;
+    // while(cin>>word)
+    //     if(exclude.find(word)==exclude.end())
+    //         ++word_count[word];
+    // for(const auto& w:word_count)
+    //     cout<<w.first<<" occurs "<< w.second << ((w.second>1)?" times":" time")<<endl;
     //哈希，桶
 #pragma endregion
 #pragma region 关联容器
 #pragma endregion
 #pragma region 智能指针
 
+// shared_ptr<string> p1;
+// shared_ptr<list<int>> p2;
+// if(p1&&p1->empty())
+// {
+//     *p1 = "hi";
+// }
+// cout<<"p1"<<endl;
+// cout<<p1.unique()<<endl;
+// // shared_ptr<int> p3 = make_shared<int>(42);
+// // shared_ptr<string> p4 = make_shared<string>(10,'9'); 
+// //shared_ptr<int> p(new int(42));
+// //process(p);
+// //cout<<p.use_count()<<endl;//count = 1
+
+// //int *x(new int(1024));
+// //process(x); 错误不能将int*转化为shared_ptr<int>
+// //process(shared_ptr<int>(x));//合法
+// //调用方法后x被释放
+
+// shared_ptr<int> p(new int(42));
+// int *q = p.get();
+// {
+//     shared_ptr<int> p2(q);
+// }//程序块结束，p2被销毁，指向的内存被释放
+//永远不要用get初始化另一个智能指针或为另一个智能指针赋值
+#pragma endregion
+#pragma region 动态数组
+// typedef int arrT[42];
+// int *p = new arrT;//编译器执行int *p = new int[42];
+// int *pia = new int[10];//10个未初始化的int
+// int *pia2 = new int[10]();//10个值初始化为0的int
+// string *psa = new string[10]; //10个空string
+// string *psa2 = new string[10](); //10个空string
+// int *pia3 = new int[10]{0,1,2,3,4,5,6,7,8,9};//初始化
+// string *psa3 = new string[10]{"a","an","the",string(3,'x')};
+
+// size_t n = 0;
+// int *p = new int[n];
+// //若n = 0,则p就类似于尾后迭代器
+// for(int *q = p; q!=p+n;++q)
+// {
+//     //处理数组
+// }
+// char arr[0];//错误：不能定义长度为0的数组
+// char* cp = new char[0];//正确，但cp不能解引用；
 
 
+// unique_ptr<int[]> up(new int[10]);
+// up.reset();//自动调用delete[]
+// for(size_t i = 0;i!=10;i++)
+// {
+//     up[i] = i;    
+// }
+// //如果希望使用share_ptr管理，必须自定义删除器
+// shared_ptr<int> sp(new int[10],[](int *p){delete []p;});
+// sp.reset();//使用我们提供的lambda释放数组
+// //shared_ptr 未定义下标运算符，并且不支持指针的算数运算
+// for(size_t i = 0;i!=10;i++)
+// {
+//     *(sp.get()+i) = i;//使用get()获取一个内置指针
+// }
+
+//allocator类
+//将内存分配和对象构造组合在一起可能导致不必要的浪费
+// string *const p = new string[10]; 
+// string s;
+// string *q = p;//q指向第一个string
+// while(cin>>s&&q!=p+10)
+// {
+//     *q++ = s; //赋予*q一个新值
+// }
+// const size_t size = q-p;//记录我们读取了多少string
+// //使用数组
+// delete[] p;
+
+// int n =10;
+// allocator<string> alloc;
+
+// auto const p = alloc.allocate(n);
+// auto q = p;
+// alloc.construct(q++);
+// alloc.construct(q++,10,'c');
+// alloc.construct(q++,"hi");
+
+// cout<<*p<<endl;//正确，“”
+// cout<<*q<<endl;//错误，q指向未构造的内存
+// while(q!=p)
+// {
+//     alloc.destroy(--q);
+// }
+// alloc.deallocate(p,n);
+allocator<int> alloc;
+vector<int> vi({0,1,2,3,4,5,6,7,8,9});
+auto p = alloc.allocate(vi.size()*2);
+auto q = uninitialized_copy(vi.begin(),vi.end(),p);
+
+uninitialized_fill_n(q,vi.size(),42);
 #pragma endregion
     return 0;
 }

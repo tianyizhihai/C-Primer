@@ -1,5 +1,5 @@
 #include "Primer.h"
-
+using namespace std;
 #pragma region string流
 void LJM_StringStream()
 {
@@ -30,9 +30,15 @@ void LJM_StringStream()
         }
     }
 }
+
+string make_plural(size_t ctr,const string& word,const string& ending)
+{
+    return (ctr>1) ? word+ending:word;
+}
 #pragma endregion
 
 #pragma region 泛型算法概述
+
 // 消除重复单词
 void elimDups(vector<string> &words)
 {
@@ -122,4 +128,49 @@ bool check_size(const string &s, string::size_type sz)
 {
     return s.size() >= sz;
 }
+#pragma endregion
+#pragma region 智能指针
+void process(shared_ptr<int> ptr)
+{
+    
+}
+TextQuery::TextQuery(ifstream &is):file(new vector<string>)
+{
+    string text;
+    while(getline(is,text))
+    {
+        file->push_back(text);
+        int n = file->size()-1;
+        istringstream line(text);
+        string word;
+        while(line>>word)
+        {
+            auto& lines = wm[word];
+            if(!lines)
+                lines.reset(new set<line_on>);
+            lines->insert(n);
+        }
+    }
+}
+QueryResult TextQuery::query(const string& sought) const 
+{
+    static shared_ptr<set<line_on>> nodata(new set<line_on>);
+    auto loc = wm.find(sought);
+    if(loc == wm.end())
+        return QueryResult(sought,nodata,file);
+    else 
+        return QueryResult(sought,loc->second,file);
+}
+ostream& print(ostream& os,const QueryResult& qr)
+{
+    os<<qr.sought<<"occurs"<<qr.lines->size()<<""<<make_plural(qr.lines->size(),"time","s")<<endl;
+    for(auto num:*qr.lines)
+    {
+        os<<"\t(line"<<num+1<<")"<<*(qr.file->begin()+num)<<endl;
+    }
+    return os;
+}
+
+#pragma region 拷贝，赋值与销毁
+Foo f(Foo f){return f;};
 #pragma endregion
